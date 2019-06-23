@@ -10,12 +10,12 @@ Vestibulum non mi eu justo vulputate porttitor. Curabitur tristique condimentum 
 Mauris sed mauris sed tellus consectetur vehicula. In hac habitasse platea dictumst. Aenean eu enim lorem. Pellentesque sodales posuere blandit. Ut at augue luctus, eleifend sapien quis, tempor purus. In eu volutpat tortor, nec pretium libero. Morbi at odio ac magna dapibus convallis.`
 
 
-fs.writeFile('test.txt',lorem,(err)=>{
+fs.writeFile('test2.txt',lorem,(err)=>{
          if(err){
             console.error(err);
          }
      });
-     fs.readFile("test.txt","utf8",(err,data)=>{
+     fs.readFile("test2.txt","utf8",(err,data)=>{
        if(err){
          console.log(err)
        }
@@ -23,18 +23,16 @@ fs.writeFile('test.txt',lorem,(err)=>{
        totalCount(data);
        storyWords(data);
        letterCount(data);
+       wordCount(data);
        
      })
+     //broj na  zborovi 
      
      var totalCount=(data)=>{
       var result=data.split(" ");
       console.log((result.length))
      }
-     //moe resenie
-     var myText=lorem;
-     var result=myText.split(" ");
-     console.log((result.length))
-
+    
      //broj na recenici vo tekst
      var storyWords=(str)=>{
       var storyWords = lorem.split(' ');
@@ -44,37 +42,32 @@ fs.writeFile('test.txt',lorem,(err)=>{
           sentences += 1;
         }
       });
-      console.log(sentences + (' sentences'));
+      console.log(`vo tekstot ima ${sentences + (' recenici ')}`);
      }
-
-///moe resenie
-
-     var storyWords1 = lorem.split(' ');
-     var sentences = 0;
-     storyWords1.forEach(word => {
-       if (word[word.length - 1] === '.' || word[word.length - 1] === '!') {
-         sentences += 1;
+      //broj na karakteri
+      var letterCount=(str)=>{
+        var letterCount = str.replace(/\s+/g, '').length;
+  
+        console.log(`Vo tekstot ima ${letterCount} bukvi  `);
+        
        }
-     });
-     console.log(sentences + (' sentences'));
-     
-     //broj na karakteri
-     var letterCount=(str)=>{
-      var letterCount = str.replace(/\s+/g, '').length;
-
-      console.log(letterCount);
-      
-     }
-
-
-
-//moe resenie
- var str = lorem;
-var letterCount1 = str.replace(/\s+/g, '').length;
-
-console.log(letterCount1);
-
 //zborovi so pomalku od 7 karakteri 
-
- 
-
+//  var wordCount = (str) => { 
+//      var array = []; 
+//      var array2 = [];
+//      var array3 = [];
+   
+//     str = str.split('.').join("");
+//      var words = str.replace(/,/g,'').split(" ");
+//         for(var i = 0; i < words.length;i++){
+//           if(words[i].length > 7) {
+//              array.push(words[i]);
+//           }
+//           else if(words[i].length <7 ){
+//               array2.push(words[i])
+//           }
+//           else{
+//               array3.push(words[i])
+//           }
+//          }}
+       
