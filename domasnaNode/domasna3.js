@@ -52,22 +52,28 @@ fs.writeFile('test2.txt',lorem,(err)=>{
         
        }
 //zborovi so pomalku od 7 karakteri 
-//  var wordCount = (str) => { 
-//      var array = []; 
-//      var array2 = [];
-//      var array3 = [];
+ var wordCount = (str) => { 
+      var array = []; 
+      var array2 = [];
+      var array3 = [];
    
-//     str = str.split('.').join("");
-//      var words = str.replace(/,/g,'').split(" ");
-//         for(var i = 0; i < words.length;i++){
-//           if(words[i].length > 7) {
-//              array.push(words[i]);
-//           }
-//           else if(words[i].length <7 ){
-//               array2.push(words[i])
-//           }
-//           else{
-//               array3.push(words[i])
-//           }
-//          }}
+     str = str.split('.').join("");
+       var words = str.replace(/,/g,'').split(" ");
+         for(var i = 0; i < words.length;i++){
+           if(words[i].length > 7) {
+              array.push(words[i]);
+           }
+           else if(words[i].length <7 ){
+               array2.push(words[i])
+           }
+           else{
+               array3.push(words[i])
+           }
+
+    }
+console.log(array.length);
+console.log(array2.length);
+console.log(array3.length);
+console.log(words.length)
+}
        
