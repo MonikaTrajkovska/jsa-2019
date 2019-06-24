@@ -57,7 +57,7 @@ fs.writeFile('test2.txt',lorem,(err)=>{
       var array2 = [];
       var array3 = [];
    
-     str = str.split('.').join("");
+  
        var words = str.replace(/,/g,'').split(" ");
          for(var i = 0; i < words.length;i++){
            if(words[i].length > 7) {
