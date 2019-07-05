@@ -83,40 +83,8 @@ var UpdateFood = (req, res) => {
 }
 
 var PartialUpdateFood = (req, res) => {
-    var check = req.body.id != undefined
-                || req.body.name != undefined || req.body.name != "" || req.body.name.length > 0
-                || req.body.price != undefined
-                || req.body.calories != undefined;
- 
-    if (!check) {
-        return res.status(400).send('Bad request');
-    }
-    fs.readFile('./food_list.json', 'utf8', (err, data) => {
-        if (err) {
-            res.send('Could not read file');
-            return;
-        }
-        var jData = JSON.parse(data);
-        var body = req.body;
-        var foodKeys = Object.keys(body);
-        for (let i = 0; i < jData.length; i++) {
-            if (jData[i].id == req.params.id) {
-                for (let j = 0; j < foodKeys.length; j++) {
-                    jData[i][foodKeys[j]] = body[foodKeys[j]];
-                    console.log(body[foodKeys[j]]);
-                }
-                break;
- 
-            }
-        }
-        fs.writeFile('./food_list.json', JSON.stringify(jData), (err) => {
-            if (err) {
-                return res.status(500).send('Could not save file');
-            }
-            return res.status(200).send('Success!');
-        });
-    });
- }
+}
+        
 
 var DeleteFood = (req, res) => {
     fs.readFile('./food_list.json', 'utf8', (err, data) => {

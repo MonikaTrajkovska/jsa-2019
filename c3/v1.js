@@ -1,3 +1,4 @@
+//resenie domasna najvisok prosek, najnisok i sreden prosek 
 var niza = [{
     ime: "Pero", prezime: "Perovski", prosek: 6.2
 },
