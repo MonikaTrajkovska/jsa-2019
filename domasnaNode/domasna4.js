@@ -24,7 +24,7 @@ var server= http.createServer(function(req,res){
                 var output=0;
                 if(URL.length >=2){
                     for ( let i=2;i< URL.length;i++){
-                    output= parseInt(URL[2] / parseInt(URL[3]))
+                    output= parseInt(URL[2]) / parseInt(URL[3])
                 }
             }
                 break;

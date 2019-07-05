@@ -1,4 +1,4 @@
-
+//pecatenje  na sekoj tret paren broj 
  function even(){
      var i=0;
     var b=0;

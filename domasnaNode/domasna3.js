@@ -35,7 +35,7 @@ fs.writeFile('test2.txt',lorem,(err)=>{
     
      //broj na recenici vo tekst
      var storyWords=(str)=>{
-      var storyWords = lorem.split(' ');
+       var storyWords = lorem.split(' ');
       var sentences = 0;
       storyWords.forEach(word => {
         if (word[word.length - 1] === '.' || word[word.length - 1] === '!') {

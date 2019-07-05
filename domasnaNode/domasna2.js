@@ -76,5 +76,6 @@ console.log(letterCount1);
 
 //zborovi so pomalku od 7 karakteri 
 
+
  
 
