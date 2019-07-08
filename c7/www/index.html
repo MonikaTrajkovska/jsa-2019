@@ -1,3 +1,4 @@
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,49 +6,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+       
+    </style>
 </head>
 <body>
-    <h1>Food table!</h1>
-    <style type="text/css">
-    table td{
-        padding:25px;
-        border:5px solid red;
-    }
-    table{
-        margin:auto;
-    }
-</style>
-<table border="2" id="tabela">
-    <th class="id">ID</th>
-    <th class="name">Name</th>
-    <th class="price">Price</th>
-    <th class="calories">Calories</th>
-</table>
-    <button id="get-food-btn">Get Food</button>
-
+    <h1>Food list</h1>
+    <button id="get-food-btn">Get Food</button> 
+    <button id="button">Add</button>
+ 
+    
+    <table id="table" border="1" >
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Calories</th>
+			
+		</tr>
+    </table>
+    
+    <div>
+        <form>
+        </script>
+        <label for="id">Id</label>
+        <input type="text" id="id"><br>
+        <label for="name">name</label>
+        <input type="text" id="name"><br/>
+        <label for="price">Price</label>
+        <input type="text" id="price"><br>
+        <label for="calories">Calories</label>
+        <input type="text" id="calories"><br>
+        
+    </form>
+</div>
+    
     <script>
-        var getFoodBtn = document.querySelector('#get-food-btn');
-        getFoodBtn.addEventListener('click', (e) => {
-            fetch('http://127.0.0.1:8080/food')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                var table=document.getElementById("tabela");
-                for(var i=0;i<data.length;i++){
-                    var table=document.getElementById("tabela");
-                    var row=table.insertRow(i);
-                    var cell1=row.insertCell(0);
-                    var cell2=row.insertCell(1);
+    var getFoodBtn = document.querySelector('#get-food-btn');
+     var kopce = document.querySelector('#button');
+  
+	  function New() {
+                    window.location.reload();
+                   
+            }
+            var newForm = () => {fetch("http://127.0.0.1:8080/food")
+                 .then(function(response) {
+                     return response.json()
+                 }).then(data=>{
+                     var table = document.getElementById("table");
+                    for(var i=0;i<data.length;i++){
+                    
+                     var row=table.insertRow(table.length);
+                     var cell1=row.insertCell(0);
+                     var cell2=row.insertCell(1);
                     var cell3=row.insertCell(2);
-                    var cell4=row.insertCell(3);
-                    cell1.innerHTML=data[i].id,
-                    cell2.innerHTML=data[i].name,
-                    cell3.innerHTML=data[i].price,
-                    cell4.innerHTML=data[i].calories
-
-                }
-            });
+                     var cell4=row.insertCell(3);
+                    id=document.getElementById("id").value,
+                    name=document.getElementById("name").value,
+                    price=document.getElementById("price").value,
+                    calories=document.getElementById("calories").value;
+                       cell1.innerHTML=id;
+                    cell2.innerHTML=name;
+                    cell3.innerHTML=price;
+                    cell4.innerHTML=calories;
+                
+                       }
+                 })
+                 .catch(function(err) {
+                   console.log(err);
+               });}
+        getFoodBtn.addEventListener('click', newForm);
+      kopce.addEventListener('click', newForm);
+        
+         var dataContainer = document.querySelector('.data');
+         var getFoodBtn = document.querySelector('#get-food-btn');
+          getFoodBtn.addEventListener('click', (e) => {
+         fetch('http://127.0.0.1:8080/food')
+              .then(res => res.json())
+         .then(data => {
+                // console.log(data);
+                for(let i = 0; i < data.length; i++){
+                    var tr = document.createElement('tr');
+                      var td1 = document.createElement('td');
+                     td1.innerText = data[i].id;
+                     tr.append(td1);
+                     var td2 = document.createElement('td');
+                     td2.innerText = data[i].name;
+                     tr.append(td2);
+                    var td3 = document.createElement('td');
+                      td3.innerText = data[i].price;
+                      tr.append(td3);
+                      var td4 = document.createElement('td');
+                      td4.innerText = data[i].calories;
+                      tr.append(td4);
+                      var td5 = document.createElement('td');
+                     // td5.innerText = data[i].id;
+                      var delBtn = document.createElement('button');
+                     delBtn.innerText = 'Delete';
+                      delBtn.addEventListener('click', function(e) {
+                          var parent = this.parentNode.parentNode
+                          // alert(`Delete ${data[i].id}`);
+                          fetch(
+                         `http://127.0.0.1:8080/food/${data[i].id}`,
+                              {method: 'delete'}
+                          )
+                         .then(res => res.text())
+                          .then(data => {
+                          parent.remove();
+                              console.log('deleted');
+                          });
         });
+                      td5.append(delBtn);
+                      tr.append(td5);
+                      dataContainer.appendChild(tr);
+                  }
+            });
+          });
     </script>
 </body>
 </html>
