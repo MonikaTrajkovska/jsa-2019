@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" />
+   
+</head>
+<body>
+        <h1>Food table</h1>
+        <h2>This is a table made with Handlebars </h2>
+
+         <table border="2">
+         <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Calories</th>
+       
+        </thead> <tbody>
+        {{#each hrana}}      
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.calories}}</td>
+                
+            </tr>
+            {{/each}} 
+        </tbody>
+        </table>
+       
+       
+
+    
+</body>
+</html>
